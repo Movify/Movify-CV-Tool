@@ -6,7 +6,7 @@
     "start": "node server.js"
   },
   "dependencies": {
-    "angular-expressions": "^0.3.0",
+    "angular-expressions": "^1.0.1",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",
     "docxtemplater": "^3.6.1",
