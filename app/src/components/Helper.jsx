@@ -12,19 +12,21 @@ const Container = styled.span`
   align-items: flex-end;
 `;
 
-const Helper = ({ lightMode, text }) => (
-  <Container data-tip={text} lightMode={lightMode}>
+const Helper = ({ lightMode, place, text }) => (
+  <Container data-tip={text} data-place={place} lightMode={lightMode}>
     <QuestionMarkIcon />
   </Container>
 );
 
 Helper.propTypes = {
   lightMode: PropTypes.bool,
+  place: PropTypes.string,
   text: PropTypes.string.isRequired,
 };
 
 Helper.defaultProps = {
   lightMode: false,
+  place: 'top',
 };
 
 export default Helper;
