@@ -4,8 +4,9 @@ require('isomorphic-fetch');
 
 const getFileName = data => {
     const date = new Date().toISOString().slice(0, 10).replace(/-/g, '');
-    // Naming convention: CV Movify - Firstname Lastname - YYYYMMDD - Position
-    return `CV Movify - ${data.firstName} ${data.lastName} - ${date} - ${data.position}.docx`;     
+    // Naming convention: CV Movify - Firstname Lastname - YYYYMMDD - Position - no /
+    const filename = `CV Movify - ${data.firstName} ${data.lastName} - ${date} - ${data.position}.docx`.replace(/\//g, '-');
+    return filename;
 }
 
 const uploadFile = (file, accessToken) => {
@@ -27,6 +28,7 @@ module.exports = {
         const folderId = 'id:m41NXAS4SBAAAAAAAACR7w';
 
         const filePath = `${folderId}/${getFileName(data)}`;
+        console.log('filename', getFileName(data));
 
         try {
             await uploadFile({ data: doc, path: filePath }, accessToken);
